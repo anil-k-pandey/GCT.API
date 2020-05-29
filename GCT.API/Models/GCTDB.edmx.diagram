@@ -6,6 +6,19 @@
     <edmx:Diagrams>
       <Diagram DiagramId="5d1754d568554b86b6efc7ce77c57c49" Name="Diagram1">
         <EntityTypeShape EntityType="GCTModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GCTModel.BudgetVarianceReason" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="GCTModel.Contact" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GCTModel.Country" Width="1.5" PointX="3.75" PointY="6.75" />
+        <EntityTypeShape EntityType="GCTModel.Currency" Width="1.5" PointX="6" PointY="16.5" />
+        <EntityTypeShape EntityType="GCTModel.PrimaryVariance" Width="1.5" PointX="3.75" PointY="2.875" />
+        <EntityTypeShape EntityType="GCTModel.SecondaryVariance" Width="1.5" PointX="3.75" PointY="14.125" />
+        <EntityTypeShape EntityType="GCTModel.Tracker" Width="1.5" PointX="6" PointY="3.5" />
+        <EntityTypeShape EntityType="GCTModel.Vendor" Width="1.5" PointX="3.75" PointY="11" />
+        <AssociationConnector Association="GCTModel.FK_dbo_Countries_dbo_Currencies_CountryId" />
+        <AssociationConnector Association="GCTModel.FK_dbo_Country_dbo_Tracker_CountryId" />
+        <AssociationConnector Association="GCTModel.FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId" />
+        <AssociationConnector Association="GCTModel.FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId" />
+        <AssociationConnector Association="GCTModel.FK_dbo_Vendors_dbo_Tracker_VendorId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

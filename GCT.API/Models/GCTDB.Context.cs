@@ -26,5 +26,13 @@ namespace GCT.API.Models
         }
     
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<BudgetVarianceReason> BudgetVarianceReasons { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<PrimaryVariance> PrimaryVariances { get; set; }
+        public virtual DbSet<SecondaryVariance> SecondaryVariances { get; set; }
+        public virtual DbSet<Tracker> Trackers { get; set; }
+        public virtual DbSet<Vendor> Vendors { get; set; }
     }
 }

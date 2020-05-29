@@ -4,7 +4,124 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GCTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GCTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BudgetVarianceReason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="20" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RegionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CurrencyCode" Type="char" MaxLength="3" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="FxRate" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="RPI" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="RenewalYear" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="PrimaryVariance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SecondaryVariance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tracker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ProjectCode" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ProjectName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Region" Type="nvarchar" MaxLength="20" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="ResponsibilityCentreNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="ResponsibilityCentreName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ExpenseCategory" Type="nvarchar" MaxLength="20" />
+          <Property Name="VendorId" Type="int" Nullable="false" />
+          <Property Name="RequisitionNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="5" />
+          <Property Name="LocalCcyFxRate" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="LocalCcyRPIRate" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="BudgetLocalCcy" Type="nvarchar" MaxLength="20" />
+          <Property Name="BudgetUSCcy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ActualLocalCcy" Type="nvarchar" MaxLength="20" />
+          <Property Name="ActualUSCcy" Type="nvarchar" MaxLength="20" />
+          <Property Name="CashStartDate" Type="datetime2" Precision="7" />
+          <Property Name="CashEndDate" Type="datetime2" Precision="7" />
+          <Property Name="PLStartDate" Type="datetime2" Precision="7" />
+          <Property Name="PLEndDate" Type="datetime2" Precision="7" />
+          <Property Name="RequisitionDescription" Type="nvarchar" MaxLength="1000" />
+          <Property Name="PrimaryVarianceId" Type="int" />
+          <Property Name="SecondaryVarianceId" Type="int" />
+          <Property Name="ReceiptNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Comments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Renewal" Type="nvarchar" MaxLength="10" />
+          <Property Name="TotalBudget" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="VarianceInBudget" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="NextYrLocalCcyBudget" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="NextYrUSCcyBudget" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="InternalContractor" Type="nvarchar" MaxLength="20" />
+          <Property Name="ITDirector" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdditionalComments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserId" />
@@ -14,11 +131,109 @@
           <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
         </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ChangedDate" Type="datetime2" Precision="7" />
+          <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Countries_dbo_Currencies_CountryId">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="Currencies" Type="Self.Currencies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currencies">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Country_dbo_Tracker_CountryId">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="0..1" />
+          <End Role="Tracker" Type="Self.Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId">
+          <End Role="PrimaryVariance" Type="Self.PrimaryVariance" Multiplicity="0..1" />
+          <End Role="Tracker" Type="Self.Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryVariance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="PrimaryVarianceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId">
+          <End Role="SecondaryVariance" Type="Self.SecondaryVariance" Multiplicity="0..1" />
+          <End Role="Tracker" Type="Self.Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecondaryVariance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="SecondaryVarianceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Vendors_dbo_Tracker_VendorId">
+          <End Role="Vendors" Type="Self.Vendors" Multiplicity="1" />
+          <End Role="Tracker" Type="Self.Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendors">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="GCTModelStoreContainer">
+          <EntitySet Name="BudgetVarianceReason" EntityType="Self.BudgetVarianceReason" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrimaryVariance" EntityType="Self.PrimaryVariance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SecondaryVariance" EntityType="Self.SecondaryVariance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tracker" EntityType="Self.Tracker" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Countries_dbo_Currencies_CountryId" Association="Self.FK_dbo_Countries_dbo_Currencies_CountryId">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Currencies" EntitySet="Currencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Country_dbo_Tracker_CountryId" Association="Self.FK_dbo_Country_dbo_Tracker_CountryId">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Tracker" EntitySet="Tracker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId" Association="Self.FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId">
+            <End Role="PrimaryVariance" EntitySet="PrimaryVariance" />
+            <End Role="Tracker" EntitySet="Tracker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId" Association="Self.FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId">
+            <End Role="SecondaryVariance" EntitySet="SecondaryVariance" />
+            <End Role="Tracker" EntitySet="Tracker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Vendors_dbo_Tracker_VendorId" Association="Self.FK_dbo_Vendors_dbo_Tracker_VendorId">
+            <End Role="Vendors" EntitySet="Vendors" />
+            <End Role="Tracker" EntitySet="Tracker" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GCTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -33,7 +248,233 @@
         </EntityType>
         <EntityContainer Name="GCTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="BudgetVarianceReasons" EntityType="GCTModel.BudgetVarianceReason" />
+          <EntitySet Name="Contacts" EntityType="GCTModel.Contact" />
+          <EntitySet Name="Countries" EntityType="GCTModel.Country" />
+          <EntitySet Name="Currencies" EntityType="GCTModel.Currency" />
+          <EntitySet Name="PrimaryVariances" EntityType="GCTModel.PrimaryVariance" />
+          <EntitySet Name="SecondaryVariances" EntityType="GCTModel.SecondaryVariance" />
+          <EntitySet Name="Trackers" EntityType="GCTModel.Tracker" />
+          <EntitySet Name="Vendors" EntityType="GCTModel.Vendor" />
+          <AssociationSet Name="FK_dbo_Countries_dbo_Currencies_CountryId" Association="GCTModel.FK_dbo_Countries_dbo_Currencies_CountryId">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Currency" EntitySet="Currencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Country_dbo_Tracker_CountryId" Association="GCTModel.FK_dbo_Country_dbo_Tracker_CountryId">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Tracker" EntitySet="Trackers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId" Association="GCTModel.FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId">
+            <End Role="PrimaryVariance" EntitySet="PrimaryVariances" />
+            <End Role="Tracker" EntitySet="Trackers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId" Association="GCTModel.FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId">
+            <End Role="SecondaryVariance" EntitySet="SecondaryVariances" />
+            <End Role="Tracker" EntitySet="Trackers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Vendors_dbo_Tracker_VendorId" Association="GCTModel.FK_dbo_Vendors_dbo_Tracker_VendorId">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="Tracker" EntitySet="Trackers" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="BudgetVarianceReason">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RegionName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Currencies" Relationship="GCTModel.FK_dbo_Countries_dbo_Currencies_CountryId" FromRole="Country" ToRole="Currency" />
+          <NavigationProperty Name="Trackers" Relationship="GCTModel.FK_dbo_Country_dbo_Tracker_CountryId" FromRole="Country" ToRole="Tracker" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FxRate" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="RPI" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="RenewalYear" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="GCTModel.FK_dbo_Countries_dbo_Currencies_CountryId" FromRole="Currency" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="PrimaryVariance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trackers" Relationship="GCTModel.FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId" FromRole="PrimaryVariance" ToRole="Tracker" />
+        </EntityType>
+        <EntityType Name="SecondaryVariance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trackers" Relationship="GCTModel.FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId" FromRole="SecondaryVariance" ToRole="Tracker" />
+        </EntityType>
+        <EntityType Name="Tracker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ProjectCode" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Region" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="ResponsibilityCentreNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ResponsibilityCentreName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ExpenseCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VendorId" Type="Int32" Nullable="false" />
+          <Property Name="RequisitionNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="LocalCcyFxRate" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="LocalCcyRPIRate" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="BudgetLocalCcy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BudgetUSCcy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ActualLocalCcy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ActualUSCcy" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CashStartDate" Type="DateTime" Precision="7" />
+          <Property Name="CashEndDate" Type="DateTime" Precision="7" />
+          <Property Name="PLStartDate" Type="DateTime" Precision="7" />
+          <Property Name="PLEndDate" Type="DateTime" Precision="7" />
+          <Property Name="RequisitionDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryVarianceId" Type="Int32" />
+          <Property Name="SecondaryVarianceId" Type="Int32" />
+          <Property Name="ReceiptNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Comments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Renewal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TotalBudget" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="VarianceInBudget" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="NextYrLocalCcyBudget" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="NextYrUSCcyBudget" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="InternalContractor" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ITDirector" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AdditionalComments" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="GCTModel.FK_dbo_Country_dbo_Tracker_CountryId" FromRole="Tracker" ToRole="Country" />
+          <NavigationProperty Name="PrimaryVariance" Relationship="GCTModel.FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId" FromRole="Tracker" ToRole="PrimaryVariance" />
+          <NavigationProperty Name="SecondaryVariance" Relationship="GCTModel.FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId" FromRole="Tracker" ToRole="SecondaryVariance" />
+          <NavigationProperty Name="Vendor" Relationship="GCTModel.FK_dbo_Vendors_dbo_Tracker_VendorId" FromRole="Tracker" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ChangedDate" Type="DateTime" Precision="7" />
+          <Property Name="ChangedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Trackers" Relationship="GCTModel.FK_dbo_Vendors_dbo_Tracker_VendorId" FromRole="Vendor" ToRole="Tracker" />
+        </EntityType>
+        <Association Name="FK_dbo_Countries_dbo_Currencies_CountryId">
+          <End Type="GCTModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="GCTModel.Currency" Role="Currency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Currency">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Country_dbo_Tracker_CountryId">
+          <End Type="GCTModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="GCTModel.Tracker" Role="Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId">
+          <End Type="GCTModel.PrimaryVariance" Role="PrimaryVariance" Multiplicity="0..1" />
+          <End Type="GCTModel.Tracker" Role="Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimaryVariance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="PrimaryVarianceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId">
+          <End Type="GCTModel.SecondaryVariance" Role="SecondaryVariance" Multiplicity="0..1" />
+          <End Type="GCTModel.Tracker" Role="Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SecondaryVariance">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="SecondaryVarianceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Vendors_dbo_Tracker_VendorId">
+          <End Type="GCTModel.Vendor" Role="Vendor" Multiplicity="1" />
+          <End Type="GCTModel.Tracker" Role="Tracker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tracker">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -47,6 +488,142 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BudgetVarianceReasons">
+            <EntityTypeMapping TypeName="GCTModel.BudgetVarianceReason">
+              <MappingFragment StoreEntitySet="BudgetVarianceReason">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="GCTModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="GCTModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="RegionName" ColumnName="RegionName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="GCTModel.Currency">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="RenewalYear" ColumnName="RenewalYear" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="RPI" ColumnName="RPI" />
+                <ScalarProperty Name="FxRate" ColumnName="FxRate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrimaryVariances">
+            <EntityTypeMapping TypeName="GCTModel.PrimaryVariance">
+              <MappingFragment StoreEntitySet="PrimaryVariance">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SecondaryVariances">
+            <EntityTypeMapping TypeName="GCTModel.SecondaryVariance">
+              <MappingFragment StoreEntitySet="SecondaryVariance">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trackers">
+            <EntityTypeMapping TypeName="GCTModel.Tracker">
+              <MappingFragment StoreEntitySet="Tracker">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="AdditionalComments" ColumnName="AdditionalComments" />
+                <ScalarProperty Name="ITDirector" ColumnName="ITDirector" />
+                <ScalarProperty Name="InternalContractor" ColumnName="InternalContractor" />
+                <ScalarProperty Name="NextYrUSCcyBudget" ColumnName="NextYrUSCcyBudget" />
+                <ScalarProperty Name="NextYrLocalCcyBudget" ColumnName="NextYrLocalCcyBudget" />
+                <ScalarProperty Name="VarianceInBudget" ColumnName="VarianceInBudget" />
+                <ScalarProperty Name="TotalBudget" ColumnName="TotalBudget" />
+                <ScalarProperty Name="Renewal" ColumnName="Renewal" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="SecondaryVarianceId" ColumnName="SecondaryVarianceId" />
+                <ScalarProperty Name="PrimaryVarianceId" ColumnName="PrimaryVarianceId" />
+                <ScalarProperty Name="RequisitionDescription" ColumnName="RequisitionDescription" />
+                <ScalarProperty Name="PLEndDate" ColumnName="PLEndDate" />
+                <ScalarProperty Name="PLStartDate" ColumnName="PLStartDate" />
+                <ScalarProperty Name="CashEndDate" ColumnName="CashEndDate" />
+                <ScalarProperty Name="CashStartDate" ColumnName="CashStartDate" />
+                <ScalarProperty Name="ActualUSCcy" ColumnName="ActualUSCcy" />
+                <ScalarProperty Name="ActualLocalCcy" ColumnName="ActualLocalCcy" />
+                <ScalarProperty Name="BudgetUSCcy" ColumnName="BudgetUSCcy" />
+                <ScalarProperty Name="BudgetLocalCcy" ColumnName="BudgetLocalCcy" />
+                <ScalarProperty Name="LocalCcyRPIRate" ColumnName="LocalCcyRPIRate" />
+                <ScalarProperty Name="LocalCcyFxRate" ColumnName="LocalCcyFxRate" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="RequisitionNumber" ColumnName="RequisitionNumber" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="ExpenseCategory" ColumnName="ExpenseCategory" />
+                <ScalarProperty Name="ResponsibilityCentreName" ColumnName="ResponsibilityCentreName" />
+                <ScalarProperty Name="ResponsibilityCentreNumber" ColumnName="ResponsibilityCentreNumber" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ProjectCode" ColumnName="ProjectCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="GCTModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendors">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+                <ScalarProperty Name="ChangedDate" ColumnName="ChangedDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
