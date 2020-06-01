@@ -116,6 +116,22 @@
           <Property Name="InternalContractor" Type="nvarchar" MaxLength="20" />
           <Property Name="ITDirector" Type="nvarchar" MaxLength="20" />
           <Property Name="AdditionalComments" Type="nvarchar" MaxLength="1000" />
+          <Property Name="USD" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="VAT" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Inflation1" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Inflation2" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="January" Type="nvarchar" MaxLength="100" />
+          <Property Name="February" Type="nvarchar" MaxLength="100" />
+          <Property Name="March" Type="nvarchar" MaxLength="100" />
+          <Property Name="April" Type="nvarchar" MaxLength="100" />
+          <Property Name="May" Type="nvarchar" MaxLength="100" />
+          <Property Name="June" Type="nvarchar" MaxLength="100" />
+          <Property Name="July" Type="nvarchar" MaxLength="100" />
+          <Property Name="August" Type="nvarchar" MaxLength="100" />
+          <Property Name="Septemeber" Type="nvarchar" MaxLength="100" />
+          <Property Name="October" Type="nvarchar" MaxLength="100" />
+          <Property Name="November" Type="nvarchar" MaxLength="100" />
+          <Property Name="December" Type="nvarchar" MaxLength="100" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="ChangedDate" Type="datetime2" Precision="7" />
           <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" />
@@ -402,6 +418,22 @@
           <NavigationProperty Name="PrimaryVariance" Relationship="GCTModel.FK_dbo_PrimaryVariance_dbo_Tracker_PrimaryVarianceId" FromRole="Tracker" ToRole="PrimaryVariance" />
           <NavigationProperty Name="SecondaryVariance" Relationship="GCTModel.FK_dbo_SecondaryVariance_dbo_Tracker_SecondaryVarianceId" FromRole="Tracker" ToRole="SecondaryVariance" />
           <NavigationProperty Name="Vendor" Relationship="GCTModel.FK_dbo_Vendors_dbo_Tracker_VendorId" FromRole="Tracker" ToRole="Vendor" />
+          <Property Name="USD" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="VAT" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Inflation1" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Inflation2" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="January" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="February" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="March" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="April" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="May" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="June" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="July" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="August" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Septemeber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="October" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="November" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="December" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -573,6 +605,22 @@
           <EntitySetMapping Name="Trackers">
             <EntityTypeMapping TypeName="GCTModel.Tracker">
               <MappingFragment StoreEntitySet="Tracker">
+                <ScalarProperty Name="December" ColumnName="December" />
+                <ScalarProperty Name="November" ColumnName="November" />
+                <ScalarProperty Name="October" ColumnName="October" />
+                <ScalarProperty Name="Septemeber" ColumnName="Septemeber" />
+                <ScalarProperty Name="August" ColumnName="August" />
+                <ScalarProperty Name="July" ColumnName="July" />
+                <ScalarProperty Name="June" ColumnName="June" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="April" ColumnName="April" />
+                <ScalarProperty Name="March" ColumnName="March" />
+                <ScalarProperty Name="February" ColumnName="February" />
+                <ScalarProperty Name="January" ColumnName="January" />
+                <ScalarProperty Name="Inflation2" ColumnName="Inflation2" />
+                <ScalarProperty Name="Inflation1" ColumnName="Inflation1" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="USD" ColumnName="USD" />
                 <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
                 <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
